@@ -10,13 +10,7 @@ st.set_page_config(page_title='My Portfolio', page_icon=':rocket:', layout='wide
 st.markdown(
     """
     <style>
-    body {
-        background-color: #f0f2f6;
-        color: #1e272e;
-        font-family: 'Roboto', sans-serif;
-    }
     .header {
-        background-color: #ffffff;
         padding: 30px;
         margin-bottom: 30px;
     }
