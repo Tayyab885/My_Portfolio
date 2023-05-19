@@ -64,7 +64,7 @@ st.markdown(
 
 # Create navigation menu
 nav_options = ('Home', 'Resume', 'Projects')
-nav_choice = st.sidebar.radio('Navigation', nav_options)
+nav_choice = st.sidebar.radio('Navigation', nav_options, index=0)
 
 # Create content for each page
 if nav_choice == 'Home':
@@ -80,15 +80,16 @@ if nav_choice == 'Home':
 
 # Create Resume page
 if nav_choice == 'Resume':
-    st.write('<h1>My Resume</h1>', unsafe_allow_html=True)
-    st.write('<h2>Education</h2>', unsafe_allow_html=True)
-    st.write('<ul><li>B.S. in Computer Science, Riphah International University, 2018 - 2022</li></ul>', unsafe_allow_html=True)
-    st.write('<h2>Work Experience</h2>', unsafe_allow_html=True)
-    st.write('<ul><li>Data Science Intern, Craftive Apparels , Aug 2022 - Feb 2023</li></ul>', unsafe_allow_html=True)
-    st.write('<h2>Skills</h2>', unsafe_allow_html=True)
-    st.write('<ul><li>Proficient in Python programming language and experienced in working with SQL.</li><li>Skilled in data preparation, cleaning, and feature engineering, as well as performing exploratory data analysis and visualization using Matplotlib and Seaborn</li><li>Knowledgeable in linear algebra, statistics, predictive modeling, and machine learning algorithms, including deep learning with TensorFlow and Keras.</li><li>Familiarity with computer vision using OpenCV and building web apps using Streamlit.</li><li>Competent in web scraping using Beautiful Soup.</li></ul>', unsafe_allow_html=True)
-    st.write('<h2>Tools & Technologies</h2>', unsafe_allow_html=True)
-    st.write('<ul><li>Programming Languages:<ol>Python, Java</ol></li><li>Databases:<ol>MySQL, SQL Server</ol></li><li>Data Wrangling and Manipulation:<ol>Pandas, NumPy</ol></li><li>Data Visualization:<ol>Matplotlib, Seaborn, PowerBi</ol></li><li>Machine Learning:<ol>Scikit-Learn</ol></li><li>Deep Learning:<ol>Tensorflow and Keras</ol></li><li>Web Scraping:<ol>Beautiful Soup</ol></li><li>Computer Vision:<ol>OpenCV</ol></li><li>Others:<ol>Microsoft Office, Streamlit, Git and GitHub, Jupyter Notebook, Anaconda, Google Colab</ol></li></ul>', unsafe_allow_html=True)
+    st.markdown('<h1>My Resume</h1>', unsafe_allow_html=True)
+    st.markdown('<h2>Education</h2>', unsafe_allow_html=True)
+    st.markdown('<ul><li>B.S. in Computer Science, Riphah International University, 2018 - 2022</li></ul>', unsafe_allow_html=True)
+    st.markdown('<h2>Work Experience</h2>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Data Science Intern, Craftive Apparels, Aug 2022 - Feb 2023</li></ul>', unsafe_allow_html=True)
+    st.markdown('<h2>Skills</h2>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Proficient in Python programming language and experienced in working with SQL.</li><li>Skilled in data preparation, cleaning, and feature engineering, as well as performing exploratory data analysis and visualization using Matplotlib and Seaborn.</li><li>Knowledgeable in linear algebra, statistics, predictive modeling, and machine learning algorithms, including deep learning with TensorFlow and Keras.</li><li>Familiarity with computer vision using OpenCV and building web apps using Streamlit.</li><li>Competent in web scraping using Beautiful Soup.</li></ul>', unsafe_allow_html=True)
+    st.markdown('<h2>Tools & Technologies</h2>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Programming Languages:<ol><li>Python</li><li>Java</li></ol></li><li>Databases:<ol><li>MySQL</li><li>SQL Server</li></ol></li><li>Data Wrangling and Manipulation:<ol><li>Pandas</li><li>NumPy</li></ol></li><li>Data Visualization:<ol><li>Matplotlib</li><li>Seaborn</li><li>PowerBi</li></ol></li><li>Machine Learning:<ol><li>Scikit-Learn</li></ol></li><li>Deep Learning:<ol><li>Tensorflow and Keras</li></ol></li><li>Web Scraping:<ol><li>Beautiful Soup</li></ol></li><li>Computer Vision:<ol><li>OpenCV</li></ol></li><li>Others:<ol><li>Microsoft Office</li><li>Streamlit</li><li>Git and GitHub</li><li>Jupyter Notebook</li><li>Anaconda</li><li>Google Colab</li></ol></li></ul>', unsafe_allow_html=True)
+
     
 if nav_choice == 'Projects':
     st.markdown('<h1>Projects</h2>', unsafe_allow_html=True)
@@ -96,12 +97,20 @@ if nav_choice == 'Projects':
     # Project 1
     with st.container():
         col1, col2 = st.columns([2, 3])
+        col1.image('Images/lipread.png', caption='', use_column_width=True)
+        col2.markdown('<h2>Lip Reading Using Deep Learning:</h2><ul><li>Developed a TensorFlow-based lip-reading model with Conv3D and Bidirectional LSTM for accurate interpretation of lip movements and speech recognition from videos.</li><li>Implemented an efficient data pipeline using TensorFlow\'s Dataset API for seamless training and evaluation of the lip-reading model.</li><li>Optimized model performance through TensorFlow\'s CTC loss function and learning rate scheduler, ensuring effective convergence and minimized training loss.</li><li>Created a user-friendly Streamlit app for real-time lip-reading predictions, enhancing model accessibility and usability.</li><li><a href="https://github.com/Tayyab885/Lip-Reading-Project-Using-Deep-Learning">GitHub link</a></li></ul>', unsafe_allow_html=True)
+
+    st.markdown('<hr>', unsafe_allow_html=True)
+    
+    # Project 2
+    with st.container():
+        col1, col2 = st.columns([2, 3])
         col1.image('Images/youtube.jpg', caption='', use_column_width=True)
         col2.markdown('<h2>AutoGPT YouTube Title and Script Generator:</h2><ul><li>Built a YouTube Title and Script Generator app using Python and OpenAI\'s GPT language model to assist content creators in generating engaging video content.</li><li>Utilized the langchain library to interact with the GPT model, enabling the app to quickly generate video titles and scripts based on prompts.</li><li>Implemented a Wikipedia research input to help generate script content, enhancing the app\'s ability to produce high-quality scripts.</li><li>Developed an intuitive Streamlit app interface that displays the generated title and script, as well as the title history, script history, and Wikipedia research history.</li><li>Demonstrated the value of AI in streamlining content creation processes, highlighting the potential for future AI-powered tools to enhance creative output.</li><li><a href="https://github.com/Tayyab885/AutoGPT-YouTube-Title-and-Script-Generator">GitHub link</a></li></ul>', unsafe_allow_html=True)
 
     st.markdown('<hr>', unsafe_allow_html=True)
 
-    # Project 2
+    # Project 3
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/chronic.webp', caption='', use_column_width=True)
@@ -109,7 +118,7 @@ if nav_choice == 'Projects':
 
     st.markdown('<hr>', unsafe_allow_html=True)
 
-    # Project 3
+    # Project 4
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/book.webp', caption='', use_column_width=True)
@@ -117,7 +126,7 @@ if nav_choice == 'Projects':
 
     st.markdown('<hr>', unsafe_allow_html=True)
     
-    # Project 4
+    # Project 5
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/superstore.jpg', caption='', use_column_width=True)
@@ -126,16 +135,24 @@ if nav_choice == 'Projects':
 
     st.markdown('<hr>', unsafe_allow_html=True)
     
-    # Project 5
+    # Project 6
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/covid.jpg', caption='', use_column_width=True)
         col2.markdown('<h2>Covid-19 Data Analysis:</h2><ul><li>Analyzed Covid-19 data using SQL to calculate death rates, infection percentages, and vaccination rates.</li><li>Conducted data analysis to inform decision-making and understand Covid-19 trends.</li><li>Identified countries and continents with the highest Covid-19 infection and death rates per population.</li><li>Calculated the percentage of the population in Pakistan that has been infected with Covid-19.</li><li>Analyzed Covid-19 vaccination data in Pakistan, including calculating the percentage of the population that has been vaccinated so far.</li><li><a href="https://github.com/Tayyab885/Covid-19-Data-Analysis-Using-SQL">GitHub link</a></li></ul>', unsafe_allow_html=True)
 
     st.markdown('<hr>', unsafe_allow_html=True)
+    
+    # Project 7
+    with st.container():
+        col1, col2 = st.columns([2, 3])
+        col1.image('Images/datacleaning.webp', caption='', use_column_width=True)
+        col2.markdown('<h2>Data Cleaning Using SQL:</h2><ul><li>Cleaned and standardized Nashville Housing Data using SQL queries, ensuring data integrity and consistency.</li><li>Employed string manipulation functions and data transformation techniques to populate missing property addresses and split address fields into separate columns.</li><li>Enhanced data quality by converting and standardizing date formats, facilitating accurate analysis and reporting.</li><li>Implemented data cleaning strategies to handle missing values and update null entries, resulting in a more comprehensive and reliable dataset.</li><li><a href="https://github.com/Tayyab885/Nashville-Housing-Data-Cleaning-Using-SQL">GitHub link</a></li></ul>', unsafe_allow_html=True)
 
-
-
+    st.markdown('<hr>', unsafe_allow_html=True)
+    
+    # Display closing statement
+    st.markdown('<p style="font-size: 24px; font-weight: bold;">For more projects, please visit my <a href="https://github.com/Tayyab885">GitHub</a>.</p>', unsafe_allow_html=True)
 
         
 st.markdown('</div>', unsafe_allow_html=True)
