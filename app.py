@@ -85,10 +85,32 @@ if nav_choice == 'Resume':
     st.markdown('<ul><li>B.S. in Computer Science, Riphah International University, 2018 - 2022</li></ul>', unsafe_allow_html=True)
     st.markdown('<h2>Work Experience</h2>', unsafe_allow_html=True)
     st.markdown('<ul><li>Data Science Intern, Craftive Apparels, Aug 2022 - Feb 2023</li></ul>', unsafe_allow_html=True)
+    ## Skills
     st.markdown('<h2>Skills</h2>', unsafe_allow_html=True)
     st.markdown('<ul><li>Proficient in Python programming language and experienced in working with SQL.</li><li>Skilled in data preparation, cleaning, and feature engineering, as well as performing exploratory data analysis and visualization using Matplotlib and Seaborn.</li><li>Knowledgeable in linear algebra, statistics, predictive modeling, and machine learning algorithms, including deep learning with TensorFlow and Keras.</li><li>Familiarity with computer vision using OpenCV and building web apps using Streamlit.</li><li>Competent in web scraping using Beautiful Soup.</li></ul>', unsafe_allow_html=True)
     st.markdown('<h2>Tools & Technologies</h2>', unsafe_allow_html=True)
-    st.markdown('<ul><li>Programming Languages:<ol><li>Python</li><li>Java</li></ol></li><li>Databases:<ol><li>MySQL</li><li>SQL Server</li></ol></li><li>Data Wrangling and Manipulation:<ol><li>Pandas</li><li>NumPy</li></ol></li><li>Data Visualization:<ol><li>Matplotlib</li><li>Seaborn</li><li>PowerBi</li></ol></li><li>Machine Learning:<ol><li>Scikit-Learn</li></ol></li><li>Deep Learning:<ol><li>Tensorflow and Keras</li></ol></li><li>Web Scraping:<ol><li>Beautiful Soup</li></ol></li><li>Computer Vision:<ol><li>OpenCV</li></ol></li><li>Others:<ol><li>Microsoft Office</li><li>Streamlit</li><li>Git and GitHub</li><li>Jupyter Notebook</li><li>Anaconda</li><li>Google Colab</li></ol></li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Programming Languages: Python, Java</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Databases: MySQL, SQL Server</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Data Wrangling and Manipulation: Pandas, NumPy</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Data Visualization: Matplotlib, Seaborn, PowerBi</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Machine Learning: Scikit-Learn</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Deep Learning: TensorFlow and Keras</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Web Scraping: Beautiful Soup</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Computer Vision: OpenCV</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Others: Microsoft Office, Streamlit, Git and GitHub, Jupyter Notebook, Anaconda, Google Colab</li></ul>', unsafe_allow_html=True)
+    ## Certifications
+    st.markdown('<h2>Certifications</h2>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://learn.365datascience.com/c/eb5a7bcc9d/">Introduction to Data and Data Science</a> - 365 Data Science</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://learn.365datascience.com/certificates/CC-EC4896E8AD/">Statistics</a> - 365 Data Science</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://learn.365datascience.com/c/05d779eba3/">Mathematics</a> - 365 Data Science</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://learn.365datascience.com/c/b1879ab550/">Data Cleaning and Preprocessing with Pandas</a> - 365 Data Science</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://learn.365datascience.com/certificates/CC-F2AC711D5E/">Machine Learning in Python</a> - 365 Data Science</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://www.hackerrank.com/certificates/9ce1e3043a5a">Python (Basic)</a> - HackerRank</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://www.hackerrank.com/certificates/97bdd0473225">Problem Solving (Basic)</a> - HackerRank</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://www.hackerrank.com/certificates/a2a976e2c4bc">SQL (Basic)</a> - HackerRank</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiI2ODQiLCJjZXJ0aWZpY2F0ZV91cmwiOiJodHRwczpcL1wvY2VydGlmaWNhdGVzLnNpbXBsaWNkbi5uZXRcL3NoYXJlXC90aHVtYl8zODQ4NjI4XzE2NjU1ODk4NTMucG5nIiwidXNlcm5hbWUiOiJNdWhhbW1hZCBUYXl5YWIifQ%3D%3D&utm_source=shared-certificate&utm_medium=lms&utm_campaign=shared-certificate-promotion&referrer=https%3A%2F%2Flms.simplilearn.com%2Fcourses%2F2772%2FData%2520Science%2520with%2520Python%2Fcertificate%2Fdownload-skillup&%24web_only=true&_branch_match_id=1108517453658877229&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXL87MLcjJ1EssKNDLyczL1k%2FVT0kJzcoOrswxKUkCAGUzxPclAAAA">Applied Data Science with Python</a> - Simplilearn</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://www.freecodecamp.org/certification/Tayyab885/scientific-computing-with-python-v7">Scientific Computing with Python</a> - freeCodeCamp</li></ul>', unsafe_allow_html=True)
+
 
     
 if nav_choice == 'Projects':
