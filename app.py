@@ -84,7 +84,8 @@ if nav_choice == 'Resume':
     st.markdown('<h2>Education</h2>', unsafe_allow_html=True)
     st.markdown('<ul><li>B.S. in Computer Science, Riphah International University, 2018 - 2022</li></ul>', unsafe_allow_html=True)
     st.markdown('<h2>Work Experience</h2>', unsafe_allow_html=True)
-    st.markdown('<ul><li>Data Science Intern, Craftive Apparels, Aug 2022 - Feb 2023</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Junior Data Scientist , Craftive Apparels, Aug 2022 - Feb 2023</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Data Science Intern, 4media, Mar 2022 - July 2022</li></ul>', unsafe_allow_html=True)
     ## Skills
     st.markdown('<h2>Skills</h2>', unsafe_allow_html=True)
     st.markdown('<ul><li>Proficient in Python programming language and experienced in working with SQL.</li><li>Skilled in data preparation, cleaning, and feature engineering, as well as performing exploratory data analysis and visualization using Matplotlib and Seaborn.</li><li>Knowledgeable in linear algebra, statistics, predictive modeling, and machine learning algorithms, including deep learning with TensorFlow and Keras.</li><li>Familiarity with computer vision using OpenCV and building web apps using Streamlit.</li><li>Competent in web scraping using Beautiful Soup.</li></ul>', unsafe_allow_html=True)
