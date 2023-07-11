@@ -75,7 +75,7 @@ if nav_choice == 'Home':
             st.image('Images/me.png', caption='', use_column_width=True)
         with col2:
             st.markdown('<div class="header"><h1>Welcome to My Portfolio</h1><h3>A Bit About Me:</h3><p>I am a highly motivated individual with a passion for data science and machine learning. I have a strong foundation in statistical and machine learning methods, as well as proficiency in Python and experience with data wrangling and deep learning techniques. I am eager to continue learning and expanding my skills in the field.</p></div>', unsafe_allow_html=True)
-    st.markdown('<div class="about"><h2>About Me</h2><p>My name is Muhammad Tayyab and I am a highly motivated individual with a strong passion for data science and machine learning. With a solid foundation in statistical and machine learning methods, I possess proficiency in Python and experience in data wrangling and deep learning techniques. I constantly strive to expand my knowledge and skills in the field, and am always eager to take on new challenges. I am excited to contribute my expertise to any project or team, and to continue growing as a data scientist and machine learning enthusiast. <br>In addition to my technical skills, I also have strong communication and teamwork abilities. I believe that effective collaboration and communication are essential in any successful data science project. I enjoy working with others to identify and solve complex problems, and I am always open to feedback and new ideas. I am committed to using my skills and experience to make a meaningful impact and drive positive change in any organization I work with.</p><p style="font-size: 20px; font-weight: bold;">You can find me on <a href="{LINKEDIN_URL}">LinkedIn</a> and <a href="{GITHUB_URL}">Github</a>.</p></div>'.format(LINKEDIN_URL=LINKEDIN_URL, GITHUB_URL=GITHUB_URL), unsafe_allow_html=True)
+    st.markdown('<div class="about"><h2>About Me</h2><p>My name is Muhammad Tayyab and I am a highly motivated individual with a strong passion for data science and machine learning. With a solid foundation in statistical and machine learning methods, I possess proficiency in Python and experience in data wrangling and deep learning techniques. I constantly strive to expand my knowledge and skills in the field, and am always eager to take on new challenges. I am excited to contribute my expertise to any project or team, and to continue growing as a data scientist and machine learning enthusiast. <br> <br>In addition to my technical skills, I also have strong communication and teamwork abilities. I believe that effective collaboration and communication are essential in any successful data science project. I enjoy working with others to identify and solve complex problems, and I am always open to feedback and new ideas. I am committed to using my skills and experience to make a meaningful impact and drive positive change in any organization I work with.</p><p style="font-size: 20px; font-weight: bold;">You can find me on <a href="{LINKEDIN_URL}">LinkedIn</a> and <a href="{GITHUB_URL}">Github</a>.</p></div>'.format(LINKEDIN_URL=LINKEDIN_URL, GITHUB_URL=GITHUB_URL), unsafe_allow_html=True)
 
 
 # Create Resume page
@@ -84,8 +84,8 @@ if nav_choice == 'Resume':
     st.markdown('<h2>Education</h2>', unsafe_allow_html=True)
     st.markdown('<ul><li>B.S. in Computer Science, Riphah International University, 2018 - 2022</li></ul>', unsafe_allow_html=True)
     st.markdown('<h2>Work Experience</h2>', unsafe_allow_html=True)
-    st.markdown('<ul><li>Junior Data Scientist , Craftive Apparels, Aug 2022 - Feb 2023</li></ul>', unsafe_allow_html=True)
-    st.markdown('<ul><li>Data Science Intern, 4media, Mar 2022 - July 2022</li></ul>', unsafe_allow_html=True)
+    
+    st.markdown('<ul><li>Data Science Intern, 4media, Sep 2022 - Feb 2023</li></ul>', unsafe_allow_html=True)
     ## Skills
     st.markdown('<h2>Skills</h2>', unsafe_allow_html=True)
     st.markdown('<ul><li>Proficient in Python programming language and experienced in working with SQL.</li><li>Skilled in data preparation, cleaning, and feature engineering, as well as performing exploratory data analysis and visualization using Matplotlib and Seaborn.</li><li>Knowledgeable in linear algebra, statistics, predictive modeling, and machine learning algorithms, including deep learning with TensorFlow and Keras.</li><li>Familiarity with computer vision using OpenCV and building web apps using Streamlit.</li><li>Competent in web scraping using Beautiful Soup.</li></ul>', unsafe_allow_html=True)
@@ -133,11 +133,43 @@ if nav_choice == 'Projects':
 
     st.markdown('<hr>', unsafe_allow_html=True)
 
+
+    with st.container():
+        col1, col2 = st.columns([2, 3])
+        col1.image('Images/stock_market.jpg', caption='', use_column_width=True)
+        col2.markdown('<h2>Stock Market Prediction and Forecasting Using LSTM:</h2><ul>'
+              '<li>Utilized LSTM neural networks for stock market prediction and forecasting.</li>'
+              '<li>Performed data preprocessing on historical stock price data, including cleaning and scaling.</li>'
+              '<li>Built a sequential LSTM model using TensorFlow\'s Keras API.</li>'
+              '<li>Analyzed the model\'s performance on testing data and generated future 30 days stock price forecasts.</li>'
+              '<li><a href="https://github.com/Tayyab885/Stock-Price-Prediction-And-Forecasting-Using-LSTM">GitHub link</a></li>'
+              '</ul>', unsafe_allow_html=True)
+
+
+
+    st.markdown('<hr>', unsafe_allow_html=True)
+    
+    with st.container():
+        col1, col2 = st.columns([2, 3])
+        col1.image('Images/cotton_disease.jpg', caption='', use_column_width=True)
+        col2.markdown('<h2>Cotton Disease Prediction:</h2><ul>'
+                    '<li>Project aims to predict diseases in cotton plants using deep learning techniques.</li>'
+                    '<li>Cotton plant images are used to train a model for disease classification.</li>'
+                    '<li>Model architecture includes convolutional layers and a softmax output layer.</li>'
+                    '<li>Model is trained using labeled images and performance metrics are computed.</li>'
+                    '<li>The trained model achieves an accuracy of 87% in classifying cotton plant diseases. Model evaluation is performed using a separate set of testing images.</li>'
+                    '<li><a href="https://github.com/Tayyab885/Cotton-Disease-Prediction">GitHub link</a></li>'
+                    '</ul>', unsafe_allow_html=True)
+
+    st.markdown('<hr>', unsafe_allow_html=True)
+
+
+
     # Project 3
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/chronic.webp', caption='', use_column_width=True)
-        col2.markdown('<h2>Chronic Kidney Disease Prediction:</h2><ul><li>An AutoML webapp capable of predicting chronic kidney disease as well as cleaning the data, generating an analysis report, and visualizing the data using different kinds of graphs.</li><li>Implemented three different classification algorithms and achieved an accuracy score of 98%.</li><li>Built using Streamlit and deployed on the Streamlit cloud.</li><li><a href="https://tayyab885-chronic-kidney-disease-prediction-app-s4cofm.streamlit.app/">Web app link</a></li><li><a href="https://github.com/Tayyab885/Chronic_Kidney_DIsease_Prediction">GitHub Link</a> </li></ul>', unsafe_allow_html=True)
+        col2.markdown('<h2>Chronic Kidney Disease Prediction:</h2><ul><li>An AutoML webapp capable of predicting chronic kidney disease as well as cleaning the data, generating an analysis report, and visualizing the data using different kinds of graphs.</li><li>Implemented three different classification algorithms and achieved an accuracy score of 98%.</li><li>Built using Streamlit and deployed on the Streamlit cloud.</li><li><a href="https://tayyab885-chronic-kidney-disease-prediction-app-s4cofm.streamlit.app/">Web app link</a></li><li><a href="https://github.com/Tayyab885/Chronic_Kidney_DIsease_Prediction">GitHub link</a> </li></ul>', unsafe_allow_html=True)
 
     st.markdown('<hr>', unsafe_allow_html=True)
 
