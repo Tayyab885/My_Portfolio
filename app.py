@@ -6,6 +6,7 @@ GITHUB_URL = 'https://github.com/Tayyab885'
 # Set page config and page title
 st.set_page_config(page_title='My Portfolio', page_icon=':rocket:', layout='wide')
 
+
 # Set page background color and text color
 st.markdown(
     """
@@ -90,7 +91,7 @@ if nav_choice == 'Resume':
     st.markdown('<h2>Skills</h2>', unsafe_allow_html=True)
     st.markdown('<ul><li>Proficient in Python programming language and experienced in working with SQL.</li><li>Skilled in data preparation, cleaning, and feature engineering, as well as performing exploratory data analysis and visualization using Matplotlib and Seaborn.</li><li>Knowledgeable in linear algebra, statistics, predictive modeling, and machine learning algorithms, including deep learning with TensorFlow and Keras.</li><li>Familiarity with computer vision using OpenCV and building web apps using Streamlit.</li><li>Competent in web scraping using Beautiful Soup.</li></ul>', unsafe_allow_html=True)
     st.markdown('<h2>Tools & Technologies</h2>', unsafe_allow_html=True)
-    st.markdown('<ul><li>Programming Languages: Python, Java</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li>Programming Languages: Python, JavaScript</li></ul>', unsafe_allow_html=True)
     st.markdown('<ul><li>Databases: MySQL, SQL Server</li></ul>', unsafe_allow_html=True)
     st.markdown('<ul><li>Data Wrangling and Manipulation: Pandas, NumPy</li></ul>', unsafe_allow_html=True)
     st.markdown('<ul><li>Data Visualization: Matplotlib, Seaborn, PowerBi</li></ul>', unsafe_allow_html=True)
@@ -101,6 +102,8 @@ if nav_choice == 'Resume':
     st.markdown('<ul><li>Others: Microsoft Office, Streamlit, Git and GitHub, Jupyter Notebook, Anaconda, Google Colab</li></ul>', unsafe_allow_html=True)
     ## Certifications
     st.markdown('<h2>Certifications</h2>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://coursera.org/verify/professional-cert/3VGYLML6U8ZC/">Google Advanced Data Analytics</a> - Coursera</li></ul>', unsafe_allow_html=True)
+    st.markdown('<ul><li><a href="https://coursera.org/verify/KB4FA685KYNJ/">SQL for Data Science</a> - Coursera</li></ul>', unsafe_allow_html=True)
     st.markdown('<ul><li><a href="https://learn.365datascience.com/c/eb5a7bcc9d/">Introduction to Data and Data Science</a> - 365 Data Science</li></ul>', unsafe_allow_html=True)
     st.markdown('<ul><li><a href="https://learn.365datascience.com/certificates/CC-EC4896E8AD/">Statistics</a> - 365 Data Science</li></ul>', unsafe_allow_html=True)
     st.markdown('<ul><li><a href="https://learn.365datascience.com/c/05d779eba3/">Mathematics</a> - 365 Data Science</li></ul>', unsafe_allow_html=True)
@@ -133,7 +136,7 @@ if nav_choice == 'Projects':
 
     st.markdown('<hr>', unsafe_allow_html=True)
 
-
+    # Project 3
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/stock_market.jpg', caption='', use_column_width=True)
@@ -144,11 +147,10 @@ if nav_choice == 'Projects':
               '<li>Analyzed the model\'s performance on testing data and generated future 30 days stock price forecasts.</li>'
               '<li><a href="https://github.com/Tayyab885/Stock-Price-Prediction-And-Forecasting-Using-LSTM">GitHub link</a></li>'
               '</ul>', unsafe_allow_html=True)
-
-
-
+        
     st.markdown('<hr>', unsafe_allow_html=True)
     
+    # Project 4
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/cotton_disease.jpg', caption='', use_column_width=True)
@@ -165,7 +167,7 @@ if nav_choice == 'Projects':
 
 
 
-    # Project 3
+    # Project 5
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/chronic.webp', caption='', use_column_width=True)
@@ -173,7 +175,7 @@ if nav_choice == 'Projects':
 
     st.markdown('<hr>', unsafe_allow_html=True)
 
-    # Project 4
+    # Project 6
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/book.webp', caption='', use_column_width=True)
@@ -181,7 +183,7 @@ if nav_choice == 'Projects':
 
     st.markdown('<hr>', unsafe_allow_html=True)
     
-    # Project 5
+    # Project 7
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/superstore.jpg', caption='', use_column_width=True)
@@ -190,7 +192,7 @@ if nav_choice == 'Projects':
 
     st.markdown('<hr>', unsafe_allow_html=True)
     
-    # Project 6
+    # Project 8
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/covid.jpg', caption='', use_column_width=True)
@@ -198,7 +200,7 @@ if nav_choice == 'Projects':
 
     st.markdown('<hr>', unsafe_allow_html=True)
     
-    # Project 7
+    # Project 9
     with st.container():
         col1, col2 = st.columns([2, 3])
         col1.image('Images/datacleaning.webp', caption='', use_column_width=True)
