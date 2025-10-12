@@ -283,7 +283,7 @@ if selected_page == 'Home':
         with stat_col1:
             st.markdown("""
                 <div class="stats-box">
-                    <div class="stats-number">20+</div>
+                    <div class="stats-number">25+</div>
                     <div class="stats-label">Projects</div>
                 </div>
             """, unsafe_allow_html=True)
@@ -291,7 +291,7 @@ if selected_page == 'Home':
         with stat_col2:
             st.markdown("""
                 <div class="stats-box">
-                    <div class="stats-number">15+</div>
+                    <div class="stats-number">20+</div>
                     <div class="stats-label">Certifications</div>
                 </div>
             """, unsafe_allow_html=True)
