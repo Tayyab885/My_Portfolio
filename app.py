@@ -266,7 +266,7 @@ if selected_page == 'Home':
     col1, col2 = st.columns([1, 2])
     
     with col1:
-        st.image('Images/me.png', use_container_width=True)
+        st.image('Images/me.png', width='stretch')
     
     with col2:
         st.markdown('<h1 class="gradient-text">Muhammad Tayyab</h1>', unsafe_allow_html=True)
@@ -660,7 +660,7 @@ elif selected_page == 'Projects':
         col1, col2 = st.columns([1, 2])
         
         with col1:
-            st.image(project['image'], use_container_width=True)
+            st.image(project['image'], width='stretch')
         
         with col2:
             st.markdown(f'<h3 class="project-title">{project["title"]}</h3>', unsafe_allow_html=True)
