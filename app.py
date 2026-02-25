@@ -3,848 +3,1203 @@ import streamlit as st
 # Contact Information
 LINKEDIN_URL = 'https://www.linkedin.com/in/muhammad-tayyab-9b965b1b1/'
 GITHUB_URL = 'https://github.com/Tayyab885'
-EMAIL = 'your.email@example.com'  # Add your email
+EMAIL = 'm.tayyab273@gmail.com'
 
 # Page Configuration
 st.set_page_config(
     page_title='Muhammad Tayyab | Data Scientist',
-    page_icon='🚀',
+    page_icon='◈',
     layout='wide',
     initial_sidebar_state='expanded'
 )
 
-# Custom CSS with Modern Design
+# Custom CSS - Modern Black Theme, No Gradients
 st.markdown("""
 <style>
-    /* Global Styles */
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap');
+
+    /* ===== KEYFRAMES ===== */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInLeft {
+        from { opacity: 0; transform: translateX(-20px); }
+        to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes cursorBlink {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0; }
+    }
+
+    @keyframes shimmer {
+        0%   { background-position: -400px 0; }
+        100% { background-position: 400px 0; }
+    }
+
+    @keyframes borderPulse {
+        0%, 100% { border-color: #303030; }
+        50%       { border-color: #555; }
+    }
+
+    @keyframes countUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== BASE ===== */
+    * { box-sizing: border-box; }
+
     .stApp {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        background-color: #222222;
+        font-family: 'Syne', sans-serif;
     }
-    
-    /* Hide Streamlit Default Elements */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    
-    /* Gradient Text */
-    .gradient-text {
-        background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-size: 3.5rem;
-        font-weight: 900;
-        display: inline-block;
-        animation: float 3s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-    }
-    
-    /* Section Headers */
-    .section-header {
-        color: #60a5fa;
-        font-size: 2.5rem;
-        font-weight: bold;
-        margin: 40px 0 20px 0;
-        padding-bottom: 10px;
-        border-bottom: 3px solid #60a5fa;
-    }
-    
-    /* Glass Card Effect */
-    .glass-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 25px;
-        margin: 20px 0;
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .glass-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 40px 0 rgba(96, 165, 250, 0.3);
-    }
-    
-    /* Project Card */
-    .project-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        margin: 15px 0;
-        transition: all 0.3s ease;
-    }
-    
-    .project-card:hover {
-        transform: translateY(-5px);
-        border: 1px solid rgba(96, 165, 250, 0.5);
-        box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
-    }
-    
-    .project-title {
-        color: #a78bfa;
-        font-size: 1.8rem;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-    
-    .project-desc {
-        color: #e5e7eb;
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 10px;
-    }
-    
-    /* Custom Buttons */
-    .custom-button {
-        display: inline-block;
-        padding: 12px 30px;
-        margin: 5px;
-        background: linear-gradient(90deg, #2563eb, #7c3aed);
-        color: white;
-        text-decoration: none;
-        border-radius: 25px;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        border: none;
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-    }
-    
-    .custom-button:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
-        text-decoration: none;
-        color: white;
-    }
-    
-    .github-button {
-        background: linear-gradient(90deg, #334155, #475569);
-    }
-    
-    .github-button:hover {
-        box-shadow: 0 6px 20px rgba(71, 85, 105, 0.5);
-    }
-    
-    .linkedin-button {
-        background: linear-gradient(90deg, #0e4c92, #0077b5);
-    }
-    
-    .linkedin-button:hover {
-        box-shadow: 0 6px 20px rgba(14, 76, 146, 0.5);
-    }
-    
-    /* Skill Tags */
-    .skill-tag {
-        display: inline-block;
-        padding: 8px 15px;
-        margin: 5px;
-        background: rgba(96, 165, 250, 0.2);
-        border: 1px solid rgba(96, 165, 250, 0.5);
-        border-radius: 20px;
-        color: #60a5fa;
-        font-size: 0.9rem;
-        font-weight: 500;
-    }
-    
-    /* Text Styles */
-    .intro-text {
-        color: #e5e7eb;
-        font-size: 1.2rem;
-        line-height: 1.8;
-        margin: 20px 0;
-    }
-    
-    .subheading {
-        color: #a78bfa;
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin-top: 20px;
-    }
-    
-    /* Stats Box */
-    .stats-box {
-        background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
-        border: 1px solid rgba(96, 165, 250, 0.3);
-        border-radius: 10px;
-        padding: 20px;
-        text-align: center;
-    }
-    
-    .stats-number {
-        color: #60a5fa;
-        font-size: 2.5rem;
-        font-weight: bold;
-    }
-    
-    .stats-label {
-        color: #9ca3af;
-        font-size: 1rem;
-    }
-    
-    /* Sidebar Styling */
-    [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-    }
-    
-    [data-testid="stSidebar"] .css-1d391kg {
-        padding-top: 3rem;
-    }
-    
-    /* Remove default margins */
+
+    #MainMenu { visibility: hidden; }
+    footer { visibility: hidden; }
+    header { visibility: hidden; }
+
+    /* Hide ALL sidebar toggle / collapse buttons */
+    [data-testid="collapsedControl"] { display: none !important; }
+    button[kind="header"] { display: none !important; }
+    [data-testid="stSidebarCollapseButton"] { display: none !important; }
+    [data-testid="stSidebarUserContent"] button[aria-label] { display: none !important; }
+    section[data-testid="stSidebar"] > div > div:first-child button { display: none !important; }
+    .st-emotion-cache-1rtdyuf { display: none !important; }
+    .st-emotion-cache-eczf16 { display: none !important; }
+    /* Keep sidebar always visible */
+    section[data-testid="stSidebar"] { transform: none !important; min-width: 240px !important; }
+
     .block-container {
-        padding-top: 2rem;
+        padding: 2rem 2.5rem;
+        max-width: 1200px;
     }
-    
-    /* Links */
-    a {
-        color: #60a5fa;
+
+    /* ===== SIDEBAR ===== */
+    [data-testid="stSidebar"] {
+        background-color: #222222;
+        border-right: 1px solid #242424;
+        animation: fadeIn 0.6s ease both;
+    }
+
+    [data-testid="stSidebar"] * {
+        font-family: 'Space Mono', monospace !important;
+    }
+
+    .sidebar-logo {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.7rem;
+        color: #444;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 0 0 1.5rem 0;
+        border-bottom: 1px solid #2e2e2e;
+        margin-bottom: 1.5rem;
+    }
+
+    .sidebar-name {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: 1.1rem;
+        color: #fff;
+        margin-bottom: 0.2rem;
+    }
+
+    .sidebar-title {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        color: #555;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 10px 14px;
+        margin: 4px 0;
+        border-radius: 4px;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #666;
+        text-decoration: none;
+        border: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+        color: #fff;
+        border-color: #353535;
+        background: #2a2a2a;
+        transform: translateX(4px);
+    }
+
+    .social-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 16px;
+        margin: 4px 0;
+        width: 100%;
+        border-radius: 4px;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 1px solid #3a3a3a;
+        color: #aaa;
+        background: #1e1e1e;
+        transition: all 0.2s;
+        box-sizing: border-box;
+    }
+
+    .social-btn:hover {
+        border-color: #fff;
+        color: #fff;
+        background: #2a2a2a;
         text-decoration: none;
     }
-    
-    a:hover {
-        color: #a78bfa;
+
+    /* ===== HERO ===== */
+    .hero-section {
+        padding: 3rem 0 2rem 0;
+        border-bottom: 1px solid #222222;
+        margin-bottom: 3rem;
+        animation: fadeInUp 0.7s ease both;
     }
-    
-    /* Lists */
-    ul {
-        color: #e5e7eb;
-        line-height: 1.8;
+
+    .hero-eyebrow {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #fff;
+        background: #222222;
+        border: 1px solid #353535;
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 2px;
+        margin-bottom: 1.5rem;
+        animation: slideDown 0.5s ease both;
     }
-    
-    li {
-        margin-bottom: 10px;
+
+    .hero-name {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        color: #ffffff;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin: 0 0 0.5rem 0;
+        animation: fadeInUp 0.6s ease 0.15s both;
     }
-    
-    /* Image Styling */
-    img {
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+    .hero-name::after {
+        content: '_';
+        animation: cursorBlink 1.1s step-end infinite;
+        color: #555;
+        font-weight: 400;
+    }
+
+    .hero-role {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.9rem;
+        color: #555;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 0.6s ease 0.28s both;
+    }
+
+    .hero-desc {
+        font-size: 1.05rem;
+        color: #888;
+        line-height: 1.75;
+        max-width: 520px;
+        font-weight: 400;
+        animation: fadeInUp 0.6s ease 0.4s both;
+    }
+
+    .stat-item {
+        display: inline-block;
+        margin-right: 2.5rem;
+        margin-top: 1.5rem;
+        animation: countUp 0.5s ease both;
+    }
+
+    .stat-item:nth-child(1) { animation-delay: 0.5s; }
+    .stat-item:nth-child(2) { animation-delay: 0.65s; }
+    .stat-item:nth-child(3) { animation-delay: 0.8s; }
+
+    .stat-num {
+        font-family: 'Space Mono', monospace;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #fff;
+        display: block;
+        line-height: 1;
+    }
+
+    .stat-lbl {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        color: #444;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-top: 4px;
+    }
+
+    .profile-img-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .profile-img-wrap img {
+        border-radius: 4px !important;
+        filter: grayscale(20%) contrast(1.05);
+        border: 1px solid #222;
+    }
+
+    /* ===== SECTION HEADERS ===== */
+    .sec-label {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        color: #444;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        margin-bottom: 0.3rem;
+        animation: fadeIn 0.5s ease both;
+    }
+
+    .sec-title {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: 2rem;
+        color: #fff;
+        margin: 0 0 2rem 0;
+        letter-spacing: -0.01em;
+        animation: fadeInUp 0.5s ease 0.1s both;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+        background: #222222;
+        border: 1px solid #303030;
+        border-radius: 6px;
+        padding: 1.75rem;
+        margin-bottom: 1rem;
+        transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        animation: fadeInUp 0.5s ease both;
+    }
+
+    .card:hover {
+        border-color: #555;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    .card-title {
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: #fff;
+        margin-bottom: 0.3rem;
+    }
+
+    .card-meta {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.7rem;
+        color: #555;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+    }
+
+    .card-body {
+        color: #888;
+        font-size: 0.92rem;
+        line-height: 1.7;
+    }
+
+    .card-body ul {
+        padding-left: 1.2rem;
+        margin: 0;
+    }
+
+    .card-body li {
+        color: #888;
+        margin-bottom: 0.5rem;
+        font-size: 0.92rem;
+    }
+
+    /* ===== WORK TIMELINE ===== */
+    .timeline-item {
+        position: relative;
+        padding: 1.75rem;
+        background: #222222;
+        border: 1px solid #303030;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        animation: fadeInLeft 0.5s ease both;
+    }
+
+    .timeline-item:nth-child(1) { animation-delay: 0.05s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.15s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.25s; }
+
+    .timeline-item:hover {
+        border-color: #555;
+        transform: translateX(6px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    }
+
+    .tl-company {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #fff;
+        background: #2e2e2e;
+        border: 1px solid #303030;
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 2px;
+        margin-bottom: 0.8rem;
+    }
+
+    .tl-role {
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #fff;
+        margin-bottom: 0.2rem;
+    }
+
+    .tl-date {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.68rem;
+        color: #444;
+        letter-spacing: 0.08em;
+        margin-bottom: 1rem;
+    }
+
+    .tl-current {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #000;
+        background: #fff;
+        padding: 2px 8px;
+        border-radius: 2px;
+        margin-left: 0.75rem;
+        vertical-align: middle;
+    }
+
+    /* ===== SKILL TAGS ===== */
+    .tag {
+        display: inline-block;
+        padding: 5px 12px;
+        margin: 4px 3px;
+        background: #222222;
+        border: 1px solid #353535;
+        border-radius: 3px;
+        color: #888;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        transition: all 0.15s;
+    }
+
+    .tag:hover {
+        border-color: #fff;
+        color: #fff;
+    }
+
+    /* ===== SKILL CATEGORY ===== */
+    .skill-category {
+        margin-bottom: 1.25rem;
+    }
+
+    .skill-cat-label {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #555;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid #222222;
+    }
+
+    /* ===== PROJECT CARD ===== */
+
+    .proj-num {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.62rem;
+        color: #333;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.75rem;
+    }
+
+    .proj-title {
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #fff;
+        margin-bottom: 0.5rem;
+    }
+
+    .proj-desc {
+        color: #666;
+        font-size: 0.88rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+    }
+
+    .proj-btn {
+        display: inline-block;
+        padding: 7px 16px;
+        margin: 0 6px 4px 0;
+        border: 1px solid #353535;
+        border-radius: 3px;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #888;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .proj-btn:hover {
+        border-color: #fff;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    /* ===== CERT CARD ===== */
+    .cert-card {
+        background: #222222;
+        border: 1px solid #303030;
+        border-radius: 6px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: border-color 0.25s ease, transform 0.25s ease;
+        animation: fadeInUp 0.4s ease both;
+    }
+
+    .cert-card:hover {
+        border-color: #555;
+        transform: translateX(4px);
+    }
+
+    .cert-name {
+        font-family: 'Syne', sans-serif;
+        font-weight: 600;
+        font-size: 0.92rem;
+        color: #ddd;
+    }
+
+    .cert-issuer {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.62rem;
+        color: #444;
+        letter-spacing: 0.08em;
+        margin-top: 3px;
+    }
+
+    .cert-link {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.62rem;
+        color: #555;
+        text-decoration: none;
+        border: 1px solid #222;
+        padding: 5px 12px;
+        border-radius: 3px;
+        white-space: nowrap;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: all 0.2s;
+    }
+
+    .cert-link:hover {
+        color: #fff;
+        border-color: #fff;
+        text-decoration: none;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-card {
+        background: #222222;
+        border: 1px solid #303030;
+        border-radius: 6px;
+        padding: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        animation: fadeInUp 0.5s ease both;
+    }
+
+    .contact-card:hover {
+        border-color: #555;
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .contact-icon {
+        font-size: 1.8rem;
+        margin-bottom: 0.75rem;
+        display: block;
+    }
+
+    .contact-label {
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        color: #fff;
+        margin-bottom: 0.4rem;
+    }
+
+    .contact-sub {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.68rem;
+        color: #555;
+        margin-bottom: 1.25rem;
+        line-height: 1.6;
+    }
+
+    .contact-btn {
+        display: inline-block;
+        padding: 9px 22px;
+        border: 1px solid #353535;
+        border-radius: 3px;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #888;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .contact-btn:hover {
+        border-color: #fff;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    /* ===== FORM OVERRIDES ===== */
+    .stTextInput > div > div > input,
+    .stTextArea > div > div > textarea {
+        background-color: #222222 !important;
+        border: 1px solid #222 !important;
+        border-radius: 4px !important;
+        color: #fff !important;
+        font-family: 'Space Mono', monospace !important;
+        font-size: 0.82rem !important;
+    }
+
+    .stTextInput > div > div > input:focus,
+    .stTextArea > div > div > textarea:focus {
+        border-color: #555 !important;
+        box-shadow: none !important;
+    }
+
+    .stTextInput label, .stTextArea label {
+        font-family: 'Space Mono', monospace !important;
+        font-size: 0.7rem !important;
+        letter-spacing: 0.08em !important;
+        color: #555 !important;
+        text-transform: uppercase !important;
+    }
+
+    div[data-testid="stFormSubmitButton"] button {
+        background: #fff !important;
+        color: #000 !important;
+        border: none !important;
+        font-family: 'Space Mono', monospace !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.12em !important;
+        text-transform: uppercase !important;
+        padding: 10px 28px !important;
+        border-radius: 3px !important;
+        transition: all 0.2s !important;
+    }
+
+    div[data-testid="stFormSubmitButton"] button:hover {
+        background: #ddd !important;
+    }
+
+    /* Radio override */
+    .stRadio label {
+        font-family: 'Space Mono', monospace !important;
+        font-size: 0.72rem !important;
+        color: #666 !important;
+    }
+
+    /* Divider */
+    hr {
+        border: none !important;
+        border-top: 1px solid #222222 !important;
+        margin: 2rem 0 !important;
+    }
+
+    /* About competency card */
+    .comp-card {
+        background: #222222;
+        border: 1px solid #303030;
+        border-radius: 6px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        animation: fadeInUp 0.5s ease both;
+    }
+
+    .comp-card:hover {
+        border-color: #555;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    }
+
+    .comp-icon {
+        font-size: 1.4rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .comp-title {
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: #fff;
+        margin-bottom: 0.4rem;
+    }
+
+    .comp-desc {
+        font-size: 0.85rem;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    /* ===== PROJECT CARD ===== */
+    .proj-card {
+        background: #222222;
+        border: 1px solid #303030;
+        border-radius: 6px;
+        padding: 1.75rem;
+        margin-bottom: 1.25rem;
+        transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        animation: fadeInUp 0.5s ease both;
+    }
+
+    .proj-card:hover {
+        border-color: #666;
+        transform: translateY(-4px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.45);
+    }
+
+    .footer-text {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.62rem;
+        color: #333;
+        letter-spacing: 0.1em;
+        text-align: center;
+        padding: 2rem 0;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Sidebar Navigation
+# ===== SIDEBAR =====
 with st.sidebar:
-    st.markdown("<h1 style='color: #60a5fa; text-align: center;'>🚀 Navigation</h1>", unsafe_allow_html=True)
-    st.markdown("---")
-    
-    nav_options = {
-        '🏠 Home': 'Home',
-        '📄 Resume': 'Resume',
-        '💼 Projects': 'Projects',
-        '📞 Contact': 'Contact'
-    }
-    
+    st.markdown("""
+        <div class="sidebar-logo">Portfolio · 2023</div>
+        <div class="sidebar-name">Muhammad Tayyab</div>
+        <div class="sidebar-title">Data Scientist & ML Engineer</div>
+        <br>
+    """, unsafe_allow_html=True)
+
     nav_choice = st.radio(
-        'Select Page',
-        list(nav_options.keys()),
+        'Navigation',
+        ['Home', 'Resume', 'Projects', 'Contact'],
         label_visibility='collapsed'
     )
-    
-    selected_page = nav_options[nav_choice]
-    
-    st.markdown("---")
-    st.markdown("<h3 style='color: #a78bfa;'>🔗 Connect With Me</h3>", unsafe_allow_html=True)
+
+    st.markdown("<hr>", unsafe_allow_html=True)
+
     st.markdown(f"""
-        <a href="{LINKEDIN_URL}" target="_blank" class="custom-button linkedin-button">
-            LinkedIn
-        </a>
-        <br>
-        <a href="{GITHUB_URL}" target="_blank" class="custom-button github-button">
-            GitHub
-        </a>
+        <a href="{LINKEDIN_URL}" target="_blank" class="social-btn">↗ LinkedIn</a>
+        <a href="{GITHUB_URL}" target="_blank" class="social-btn">↗ GitHub</a>
+        <a href="mailto:{EMAIL}" class="social-btn">↗ Email</a>
     """, unsafe_allow_html=True)
 
-# HOME PAGE
-if selected_page == 'Home':
-    # Hero Section
-    col1, col2 = st.columns([1, 2])
-    
+
+# ===== HOME PAGE =====
+if nav_choice == 'Home':
+    col1, col2 = st.columns([3, 2])
+
     with col1:
-        st.image('Images/me.png', width='stretch')
-    
+        st.markdown("""
+            <div class="hero-section">
+                <div class="hero-eyebrow">◈ Available for opportunities</div>
+                <h1 class="hero-name">Muhammad<br>Tayyab</h1>
+                <div class="hero-role">DATA SCIENTIST / ML ENGINEER / DESIGN ENGINEER</div>
+                <p class="hero-desc">
+                    Building intelligent systems that extract meaning from data. 
+                    Specialized in deep learning, computer vision, NLP, and 
+                    end-to-end ERP solutions.
+                </p>
+                <div>
+                    <div class="stat-item">
+                        <span class="stat-num">25+</span>
+                        <span class="stat-lbl">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">3+</span>
+                        <span class="stat-lbl">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">20+</span>
+                        <span class="stat-lbl">Certifications</span>
+                    </div>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+
     with col2:
-        st.markdown('<h1 class="gradient-text">Muhammad Tayyab</h1>', unsafe_allow_html=True)
-        st.markdown('<h2 style="color: #a78bfa; font-size: 2rem;">Data Scientist & Machine Learning Engineer</h2>', unsafe_allow_html=True)
-        st.markdown("""
-            <p class="intro-text">
-                Passionate about transforming data into actionable insights and building intelligent systems 
-                that solve real-world problems. Specialized in deep learning, computer vision, and NLP.
-            </p>
-        """, unsafe_allow_html=True)
-        
-        # Quick Stats
-        stat_col1, stat_col2, stat_col3 = st.columns(3)
-        with stat_col1:
+        try:
+            st.image('Images/me.png', width='stretch')
+        except:
             st.markdown("""
-                <div class="stats-box">
-                    <div class="stats-number">25+</div>
-                    <div class="stats-label">Projects</div>
+                <div style="background:#222222;border:1px solid #303030;border-radius:6px;
+                height:320px;display:flex;align-items:center;justify-content:center;">
+                    <span style="color:#333;font-family:'Space Mono',monospace;font-size:0.7rem;">
+                        PHOTO
+                    </span>
                 </div>
             """, unsafe_allow_html=True)
-        
-        with stat_col2:
-            st.markdown("""
-                <div class="stats-box">
-                    <div class="stats-number">20+</div>
-                    <div class="stats-label">Certifications</div>
-                </div>
-            """, unsafe_allow_html=True)
-        
-        with stat_col3:
-            st.markdown("""
-                <div class="stats-box">
-                    <div class="stats-number">2+</div>
-                    <div class="stats-label">Years Experience</div>
-                </div>
-            """, unsafe_allow_html=True)
-    
-    st.markdown("---")
-    
-    # About Me Section
-    st.markdown('<h2 class="section-header">👨‍💻 About Me</h2>', unsafe_allow_html=True)
-    
+
+    # About
     st.markdown("""
-        <div class="glass-card">
-            <p class="intro-text">
-                I am a highly motivated Data Scientist with a passion for machine learning and artificial intelligence. 
-                With a strong foundation in statistical methods and deep learning techniques, I bring a unique blend of 
-                technical expertise and problem-solving skills to every project.
-            </p>
-            <p class="intro-text">
-                My journey in data science began during my Bachelor's in Computer Science at Riphah International University, 
-                where I discovered my love for extracting meaningful patterns from data. Since then, I've worked on diverse 
-                projects ranging from lip-reading systems to stock market prediction, always pushing the boundaries of what's 
-                possible with AI.
-            </p>
-            <p class="intro-text">
-                I believe in the power of collaboration and continuous learning. Whether it's staying updated with the latest 
-                research papers or contributing to open-source projects, I'm always eager to grow and share knowledge with 
-                the community.
-            </p>
+        <div class="sec-label">About</div>
+        <div class="sec-title">Who I Am</div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <div class="card">
+            <div class="card-body">
+                Highly motivated Data Scientist and Design Engineer with a passion for machine 
+                learning and artificial intelligence. Currently at the Center for Advanced Research 
+                in Engineering, I design ERP workflows, system architectures, and data-driven 
+                solutions. My work spans deep learning systems, computer vision, NLP applications, 
+                and enterprise software.<br><br>
+                I believe in the power of clean code, reproducible workflows, and continuous learning. 
+                Whether contributing to open-source or building production systems, I'm always pushing 
+                what's possible.
+            </div>
         </div>
     """, unsafe_allow_html=True)
-    
+
     # Core Competencies
-    st.markdown('<h2 class="section-header">🎯 Core Competencies</h2>', unsafe_allow_html=True)
-    
-    comp_col1, comp_col2 = st.columns(2)
-    
-    with comp_col1:
-        st.markdown("""
-            <div class="glass-card">
-                <h3 class="subheading">🤖 Machine Learning</h3>
-                <p class="intro-text">
-                    Expert in supervised and unsupervised learning, feature engineering, and model optimization. 
-                    Proficient in scikit-learn, XGBoost, and ensemble methods.
-                </p>
-            </div>
-            
-            <div class="glass-card">
-                <h3 class="subheading">👁️ Computer Vision</h3>
-                <p class="intro-text">
-                    Experienced in image classification, object detection, and video analysis using CNNs. 
-                    Skilled with OpenCV, TensorFlow, and transfer learning techniques.
-                </p>
-            </div>
-        """, unsafe_allow_html=True)
-    
-    with comp_col2:
-        st.markdown("""
-            <div class="glass-card">
-                <h3 class="subheading">🧠 Deep Learning</h3>
-                <p class="intro-text">
-                    Specialized in neural network architectures including CNNs, RNNs, and LSTMs. 
-                    Hands-on experience with TensorFlow and Keras for complex model development.
-                </p>
-            </div>
-            
-            <div class="glass-card">
-                <h3 class="subheading">💬 NLP & LLMs</h3>
-                <p class="intro-text">
-                    Proficient in text processing, sentiment analysis, and working with large language models. 
-                    Experience with transformers, BERT, and GPT-based applications.
-                </p>
-            </div>
-        """, unsafe_allow_html=True)
-
-# RESUME PAGE
-elif selected_page == 'Resume':
-    st.markdown('<h1 class="gradient-text">📄 Resume</h1>', unsafe_allow_html=True)
-    
-    # Education
-    st.markdown('<h2 class="section-header">🎓 Education</h2>', unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("""
-        <div class="glass-card">
-            <h3 style="color: #a78bfa; font-size: 1.5rem;">Bachelor of Science in Computer Science</h3>
-            <p style="color: #9ca3af; font-size: 1.1rem;">Riphah International University | 2018 - 2022</p>
-            <p class="intro-text">
-                Graduated with a strong foundation in computer science fundamentals, data structures, 
-                algorithms, and specialized coursework in machine learning and artificial intelligence.
-            </p>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    # Work Experience
-    st.markdown('<h2 class="section-header">💼 Work Experience</h2>', unsafe_allow_html=True)
-    
-    st.markdown("""
-        <div class="glass-card">
-            <h3 style="color: #a78bfa; font-size: 1.5rem;">Implementation Engineer</h3>
-            <p style="color: #9ca3af; font-size: 1.1rem;">Center for Advanced Research in Engineering | Dec 2023 - Present </p>
-            <ul class="intro-text">
-                <li>Expertise in ERP systems, managing databases with SQL, and customizing forms in Joget using JavaScript, HTML, and CSS</li>
-                <li>Developed accurate reports with Jasper and crafted dynamic dashboards to highlight key metrics</li>
-                <li>Applied strong analytical skills to ensure data accuracy, optimize system functionality, and address challenges in ERP environments</li>
-            </ul>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    
-    st.markdown("""
-        <div class="glass-card">
-            <h3 style="color: #a78bfa; font-size: 1.5rem;">Data Science Intern</h3>
-            <p style="color: #9ca3af; font-size: 1.1rem;">4media | Sep 2022 - Feb 2023</p>
-            <ul class="intro-text">
-                <li>Developed machine learning models for business analytics and prediction tasks</li>
-                <li>Performed data analysis and visualization to derive actionable insights</li>
-                <li>Collaborated with cross-functional teams to implement data-driven solutions</li>
-                <li>Automated data pipelines and improved data processing efficiency</li>
-            </ul>
-        </div>
+        <div class="sec-label">Expertise</div>
+        <div class="sec-title">Core Competencies</div>
     """, unsafe_allow_html=True)
 
-    
-    # Skills
-    st.markdown('<h2 class="section-header">🛠️ Technical Skills</h2>', unsafe_allow_html=True)
-    
-    skills_dict = {
-        "Programming Languages": ["Python", "Java", "JavaScript", "SQL"],
-        "Data Analysis": ["Pandas", "NumPy", "Statistical Analysis"],
-        "Machine Learning": ["Scikit-Learn", "XGBoost", "Feature Engineering"],
-        "Deep Learning": ["TensorFlow", "Keras", "PyTorch", "Neural Networks"],
-        "Computer Vision": ["OpenCV", "Image Processing", "CNN"],
-        "NLP": ["Text Processing", "LSTM", "Transformers", "BERT"],
-        "Data Visualization": ["Matplotlib", "Seaborn", "PowerBI"],
-        "Databases": ["MySQL", "SQL Server", "PostgreSQL"],
-        "Tools & Platforms": ["Git/GitHub", "Jupyter Notebook", "Microsoft Office", "Google Colab"],
-        "Web Development": ["Streamlit", "HTML/CSS", "RESTful APIs"]
-    }
-    
-    for skill_category, skills in skills_dict.items():
-        st.markdown(f'<h3 class="subheading">{skill_category}</h3>', unsafe_allow_html=True)
-        skill_tags = ''.join([f'<span class="skill-tag">{skill}</span>' for skill in skills])
-        st.markdown(f'<div class="glass-card">{skill_tags}</div>', unsafe_allow_html=True)
-    
-    # Certifications
-    st.markdown('<h2 class="section-header">🏆 Certifications</h2>', unsafe_allow_html=True)
-    
-    certifications = [
-        {
-            "name": "Google Advanced Data Analytics",
-            "issuer": "Coursera",
-            "url": "https://coursera.org/verify/professional-cert/3VGYLML6U8ZC/"
-        },
-        {
-            "name": "SQL for Data Science",
-            "issuer": "Coursera",
-            "url": "https://coursera.org/verify/KB4FA685KYNJ/"
-        },
-        {
-            "name": "Machine Learning in Python",
-            "issuer": "365 Data Science",
-            "url": "https://learn.365datascience.com/certificates/CC-F2AC711D5E/"
-        },
-        {
-            "name": "Applied Data Science with Python",
-            "issuer": "Simplilearn",
-            "url": "https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiI2ODQiLCJjZXJ0aWZpY2F0ZV91cmwiOiJodHRwczpcL1wvY2VydGlmaWNhdGVzLnNpbXBsaWNkbi5uZXRcL3NoYXJlXC90aHVtYl8zODQ4NjI4XzE2NjU1ODk4NTMucG5nIiwidXNlcm5hbWUiOiJNdWhhbW1hZCBUYXl5YWIifQ%3D%3D&utm_source=shared-certificate&utm_medium=lms&utm_campaign=shared-certificate-promotion"
-        },
-        {
-            "name": "Scientific Computing with Python",
-            "issuer": "freeCodeCamp",
-            "url": "https://www.freecodecamp.org/certification/Tayyab885/scientific-computing-with-python-v7"
-        },
-        {
-            "name": "Statistics",
-            "issuer": "365 Data Science",
-            "url": "https://learn.365datascience.com/certificates/CC-EC4896E8AD/"
-        },
-        {
-            "name": "Python (Basic)",
-            "issuer": "HackerRank",
-            "url": "https://www.hackerrank.com/certificates/9ce1e3043a5a"
-        },
-        {
-            "name": "SQL (Basic)",
-            "issuer": "HackerRank",
-            "url": "https://www.hackerrank.com/certificates/a2a976e2c4bc"
-        }
+    cols = st.columns(2)
+    competencies = [
+        ("🤖", "Machine Learning", "Supervised & unsupervised learning, feature engineering, model optimization. Proficient in scikit-learn, XGBoost, and ensemble methods."),
+        ("👁", "Computer Vision", "Image classification, object detection, video analysis using CNNs. Skilled with OpenCV, TensorFlow, and transfer learning."),
+        ("🧠", "Deep Learning", "CNNs, RNNs, BiLSTMs, and transformer architectures. Hands-on with TensorFlow and Keras for complex model development."),
+        ("💬", "NLP & LLMs", "Text processing, sentiment analysis, and LLM-powered applications. Experience with transformers, BERT, and GPT-based workflows."),
+        ("🗄", "ERP Systems", "End-to-end ERP design and implementation. Database management, workflow automation, dashboards, and reporting."),
+        ("📊", "Data Analytics", "SQL-based analysis, ETL pipelines, Power BI dashboards, and business intelligence reporting."),
     ]
-    
-    cert_col1, cert_col2 = st.columns(2)
-    
-    for idx, cert in enumerate(certifications):
-        with cert_col1 if idx % 2 == 0 else cert_col2:
+
+    for i, (icon, title, desc) in enumerate(competencies):
+        with cols[i % 2]:
             st.markdown(f"""
-                <div class="glass-card">
-                    <h4 style="color: #a78bfa; margin-bottom: 10px;">{cert['name']}</h4>
-                    <p style="color: #9ca3af; margin-bottom: 15px;">{cert['issuer']}</p>
-                    <a href="{cert['url']}" target="_blank" class="custom-button">
-                        View Certificate
-                    </a>
+                <div class="comp-card">
+                    <div class="comp-icon">{icon}</div>
+                    <div class="comp-title">{title}</div>
+                    <div class="comp-desc">{desc}</div>
                 </div>
             """, unsafe_allow_html=True)
 
-# PROJECTS PAGE
-elif selected_page == 'Projects':
-    st.markdown('<h1 class="gradient-text">💼 Projects</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="intro-text">Explore my portfolio of data science and machine learning projects</p>', unsafe_allow_html=True)
-    
+
+# ===== RESUME PAGE =====
+elif nav_choice == 'Resume':
+    st.markdown("""
+        <div class="sec-label">Resume</div>
+        <div class="sec-title">Experience & Skills</div>
+    """, unsafe_allow_html=True)
+
+    # Work Experience
+    st.markdown("""
+        <div class="sec-label">Work Experience</div>
+        <h3 style="font-family:'Syne',sans-serif;color:#888;font-weight:600;font-size:1.1rem;margin:0 0 1.25rem 0;">
+            Career Timeline
+        </h3>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <div class="timeline-item">
+            <div class="tl-company">Center for Advanced Research in Engineering · Islamabad</div>
+            <div class="tl-role">Design Engineer <span class="tl-current">Current</span></div>
+            <div class="tl-date">DEC 2025 – PRESENT</div>
+            <div class="card-body">
+                <ul>
+                    <li>Collaborate with clients to gather business requirements and design ERP workflows and system architectures.</li>
+                    <li>Guide implementation teams to deliver scalable, business-aligned enterprise solutions.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="tl-company">Center for Advanced Research in Engineering · Islamabad</div>
+            <div class="tl-role">Implementation Engineer</div>
+            <div class="tl-date">DEC 2023 – DEC 2025</div>
+            <div class="card-body">
+                <ul>
+                    <li>Developed and implemented end-to-end ERP systems by building workflows, databases, and automated reports.</li>
+                    <li>Created interactive dashboards to support operational and analytical needs.</li>
+                    <li>Customized forms in Joget using JavaScript, HTML, and CSS; built dynamic reports with Jasper.</li>
+                    <li>Applied strong analytical skills to ensure data accuracy and optimize system functionality.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="tl-company">Kashmir Wood Industries PVT. LTD. · Faisalabad</div>
+            <div class="tl-role">Data Science Intern</div>
+            <div class="tl-date">NOV 2022 – APR 2023</div>
+            <div class="card-body">
+                <ul>
+                    <li>Performed end-to-end data science workflows including data cleaning, preprocessing, exploratory analysis, feature engineering, visualization, and ML model development.</li>
+                    <li>Delivered machine learning solutions aligned with client requirements.</li>
+                    <li>Documented project workflows and methodologies to ensure clarity, reproducibility, and effective knowledge transfer.</li>
+                </ul>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<hr>", unsafe_allow_html=True)
+
+    # Education
+    st.markdown("""
+        <div class="sec-label">Education</div>
+        <h3 style="font-family:'Syne',sans-serif;color:#888;font-weight:600;font-size:1.1rem;margin:0 0 1.25rem 0;">
+            Academic Background
+        </h3>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <div class="card">
+            <div class="card-title">Bachelor of Science in Computer Science</div>
+            <div class="card-meta">RIPHAH INTERNATIONAL UNIVERSITY, FAISALABAD · 2018 – 2022 · GPA: 3.59/4.0</div>
+            <div class="card-body">
+                Strong foundation in computer science fundamentals, data structures, algorithms, 
+                and specialized coursework in machine learning and artificial intelligence.
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<hr>", unsafe_allow_html=True)
+
+    # Skills
+    st.markdown("""
+        <div class="sec-label">Skills</div>
+        <h3 style="font-family:'Syne',sans-serif;color:#888;font-weight:600;font-size:1.1rem;margin:0 0 1.25rem 0;">
+            Technical Stack
+        </h3>
+    """, unsafe_allow_html=True)
+
+    skills_dict = {
+        "Languages": ["Python", "Java", "JavaScript", "SQL"],
+        "Data": ["Pandas", "NumPy", "Statistical Analysis", "Feature Engineering"],
+        "Machine Learning": ["Scikit-Learn", "XGBoost", "Collaborative Filtering"],
+        "Deep Learning": ["TensorFlow", "Keras", "PyTorch", "Conv3D", "BiLSTM", "CTC Loss"],
+        "Computer Vision": ["OpenCV", "CNN", "Image Classification", "Transfer Learning"],
+        "NLP": ["BERT", "Transformers", "LangChain", "GPT APIs", "Text Processing"],
+        "Visualization": ["Matplotlib", "Seaborn", "Plotly", "PowerBI"],
+        "Databases": ["MySQL", "SQL Server", "PostgreSQL"],
+        "Tools": ["Git/GitHub", "Jupyter", "Google Colab", "Streamlit", "Jasper", "Joget"],
+        "Web": ["HTML/CSS", "RESTful APIs", "Beautiful Soup"],
+    }
+
+    cols = st.columns(2)
+    items = list(skills_dict.items())
+    half = (len(items) + 1) // 2
+
+    for col_idx, col in enumerate(cols):
+        with col:
+            for cat, skills in items[col_idx * half:(col_idx + 1) * half]:
+                tags_html = ''.join([f'<span class="tag">{s}</span>' for s in skills])
+                st.markdown(f"""
+                    <div class="skill-category">
+                        <div class="skill-cat-label">{cat}</div>
+                        <div>{tags_html}</div>
+                    </div>
+                """, unsafe_allow_html=True)
+
+    st.markdown("<hr>", unsafe_allow_html=True)
+
+    # Certifications
+    st.markdown("""
+        <div class="sec-label">Certifications</div>
+        <h3 style="font-family:'Syne',sans-serif;color:#888;font-weight:600;font-size:1.1rem;margin:0 0 1.25rem 0;">
+            Credentials
+        </h3>
+    """, unsafe_allow_html=True)
+
+    certifications = [
+        {"name": "Google Advanced Data Analytics", "issuer": "Coursera · Sep 2023", "url": "https://coursera.org/verify/professional-cert/3VGYLML6U8ZC/"},
+        {"name": "SQL for Data Science", "issuer": "Coursera · Jun 2022", "url": "https://coursera.org/verify/KB4FA685KYNJ/"},
+        {"name": "Statistics", "issuer": "365 Data Science · Oct 2022", "url": "https://learn.365datascience.com/certificates/CC-EC4896E8AD/"},
+        {"name": "Machine Learning in Python", "issuer": "365 Data Science", "url": "https://learn.365datascience.com/certificates/CC-F2AC711D5E/"},
+        {"name": "Scientific Computing with Python", "issuer": "freeCodeCamp", "url": "https://www.freecodecamp.org/certification/Tayyab885/scientific-computing-with-python-v7"},
+        {"name": "Applied Data Science with Python", "issuer": "Simplilearn", "url": "https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiI2ODQiLCJjZXJ0aWZpY2F0ZV91cmwiOiJodHRwczpcL1wvY2VydGlmaWNhdGVzLnNpbXBsaWNkbi5uZXRcL3NoYXJlXC90aHVtYl8zODQ4NjI4XzE2NjU1ODk4NTMucG5nIiwidXNlcm5hbWUiOiJNdWhhbW1hZCBUYXl5YWIifQ%3D%3D&utm_source=shared-certificate&utm_medium=lms&utm_campaign=shared-certificate-promotion"},
+        {"name": "Python (Basic)", "issuer": "HackerRank · Jun 2022", "url": "https://www.hackerrank.com/certificates/9ce1e3043a5a"},
+        {"name": "SQL (Basic)", "issuer": "HackerRank", "url": "https://www.hackerrank.com/certificates/a2a976e2c4bc"},
+    ]
+
+    for cert in certifications:
+        st.markdown(f"""
+            <div class="cert-card">
+                <div>
+                    <div class="cert-name">{cert['name']}</div>
+                    <div class="cert-issuer">{cert['issuer']}</div>
+                </div>
+                <a href="{cert['url']}" target="_blank" class="cert-link">View ↗</a>
+            </div>
+        """, unsafe_allow_html=True)
+
+
+# ===== PROJECTS PAGE =====
+elif nav_choice == 'Projects':
+    st.markdown("""
+        <div class="sec-label">Portfolio</div>
+        <div class="sec-title">Selected Projects</div>
+    """, unsafe_allow_html=True)
+
     projects = [
         {
-            "title": "🎬 Lip Reading Using Deep Learning",
-            "image": "Images/lipread.png",
-            "description": """
-                Developed an advanced lip-reading system using deep learning for accurate speech recognition from video.
-            """,
-            "highlights": [
-                "Built TensorFlow model with Conv3D and Bidirectional LSTM",
-                "Implemented efficient data pipeline with TensorFlow's Dataset API",
-                "Optimized performance using CTC loss and learning rate scheduling",
-                "Created Streamlit app for real-time predictions"
-            ],
-            "tech": ["TensorFlow", "LSTM", "Conv3D", "Streamlit", "Computer Vision"],
+            "title": "Lip Reading Using Deep Learning",
+            "desc": "End-to-end deep learning lip-reading system for speech recognition in low-audio environments. Built with Conv3D and Bidirectional LSTM layers with CTC loss for sequence alignment, trained on aligned video datasets, and deployed via an interactive Streamlit application.",
+            "tech": ["TensorFlow", "Conv3D", "BiLSTM", "CTC Loss", "Streamlit", "Computer Vision"],
             "github": "https://github.com/Tayyab885/Lip-Reading-Project-Using-Deep-Learning",
             "demo": None
         },
         {
-            "title": "🤖 AutoGPT YouTube Title and Script Generator",
-            "image": "Images/youtube.jpg",
-            "description": """
-                AI-powered content creation tool leveraging OpenAI's GPT to generate engaging YouTube titles and scripts.
-            """,
-            "highlights": [
-                "Integrated OpenAI's GPT model for creative content generation",
-                "Implemented Wikipedia research for enhanced script quality",
-                "Built intuitive Streamlit interface with history tracking",
-                "Streamlined content creation workflow for creators"
-            ],
+            "title": "AutoGPT YouTube Title and Script Generator",
+            "desc": "AI-powered content creation tool using OpenAI GPT to automatically generate YouTube titles and full video scripts. Integrates Wikipedia for real-time research, tracks conversation history for context, and features an intuitive Streamlit interface for creators.",
             "tech": ["OpenAI GPT", "LangChain", "Python", "Streamlit", "NLP"],
             "github": "https://github.com/Tayyab885/AutoGPT-YouTube-Title-and-Script-Generator",
             "demo": None
         },
         {
-            "title": "📈 Stock Market Prediction Using LSTM",
-            "image": "Images/stock_market.jpg",
-            "description": """
-                Advanced time series forecasting system for stock price prediction using LSTM neural networks.
-            """,
-            "highlights": [
-                "Implemented LSTM model for sequential data analysis",
-                "Achieved accurate price predictions with comprehensive data preprocessing",
-                "Generated 30-day future forecasts with confidence intervals",
-                "Optimized model architecture for financial time series"
-            ],
-            "tech": ["LSTM", "TensorFlow", "Keras", "Time Series", "Financial Analysis"],
+            "title": "Stock Market Prediction Using LSTM",
+            "desc": "Time series forecasting system for stock prices using LSTM neural networks. Features MinMax scaling, a sliding window approach, and comprehensive preprocessing. Generates 30-day future forecasts with confidence intervals and interactive visualizations for financial analysis.",
+            "tech": ["LSTM", "TensorFlow", "Keras", "Time Series", "Finance", "Pandas"],
             "github": "https://github.com/Tayyab885/Stock-Price-Prediction-And-Forecasting-Using-LSTM",
             "demo": None
         },
         {
-            "title": "🌿 Cotton Disease Prediction",
-            "image": "Images/cotton_disease.jpg",
-            "description": """
-                Deep learning-based disease classification system for cotton plants using image recognition.
-            """,
-            "highlights": [
-                "Achieved 87% accuracy in disease classification",
-                "Developed CNN architecture with optimized layers",
-                "Processed and augmented agricultural image datasets",
-                "Deployed model for real-world agricultural applications"
-            ],
-            "tech": ["CNN", "Image Classification", "TensorFlow", "Computer Vision"],
+            "title": "Cotton Plant Disease Prediction",
+            "desc": "Deep learning plant disease classification system achieving 87% accuracy on cotton leaf images. Led the full pipeline from dataset collection and image augmentation to CNN architecture design, model training, evaluation, and production deployment using TensorFlow and Keras.",
+            "tech": ["CNN", "TensorFlow", "Keras", "Image Classification", "Agriculture AI", "OpenCV"],
             "github": "https://github.com/Tayyab885/Cotton-Disease-Prediction",
             "demo": None
         },
         {
-            "title": "🏥 Chronic Kidney Disease Prediction",
-            "image": "Images/chronic.webp",
-            "description": """
-                Complete AutoML web application for predicting chronic kidney disease with data analysis capabilities.
-            """,
-            "highlights": [
-                "Implemented 3 classification algorithms with 98% accuracy",
-                "Built automated data cleaning and EDA pipeline",
-                "Created interactive visualizations and analysis reports",
-                "Deployed on Streamlit Cloud for public access"
-            ],
-            "tech": ["AutoML", "Scikit-learn", "Pandas", "Streamlit", "Healthcare AI"],
+            "title": "Chronic Kidney Disease Prediction",
+            "desc": "AutoML web application for predicting chronic kidney disease with 98% accuracy using Random Forest, SVM, and Logistic Regression. Includes automated data cleaning, EDA pipeline, and interactive visualizations. Deployed publicly on Streamlit Cloud for open access.",
+            "tech": ["AutoML", "Scikit-learn", "Pandas", "Streamlit", "Healthcare AI", "EDA"],
             "github": "https://github.com/Tayyab885/Chronic_Kidney_DIsease_Prediction",
             "demo": "https://tayyab885-chronic-kidney-disease-prediction-app-s4cofm.streamlit.app/"
         },
         {
-            "title": "📚 Book Recommendation System",
-            "image": "Images/book.webp",
-            "description": """
-                Collaborative filtering-based recommendation engine for personalized book suggestions.
-            """,
-            "highlights": [
-                "Implemented instance-based collaborative filtering",
-                "Built searchable database with book details",
-                "Generated personalized recommendations using similarity scores",
-                "Deployed interactive web app with user-friendly interface"
-            ],
-            "tech": ["Collaborative Filtering", "Machine Learning", "Streamlit", "Python"],
+            "title": "Book Recommendation System",
+            "desc": "Collaborative filtering recommendation engine delivering personalized book suggestions using instance-based cosine similarity scoring. Features a searchable database with book metadata and ratings, generating top-N recommendations based on reading history via a clean Streamlit interface.",
+            "tech": ["Collaborative Filtering", "Machine Learning", "Streamlit", "Python", "Cosine Similarity"],
             "github": "https://github.com/Tayyab885/BookRecommendationSystem",
-            "demo": "https://tayyab885-bookrecommendationsystem-recommendation-zecywg.streamlitapp.com/"
+            "demo": None
         },
         {
-            "title": "🛒 Superstore Sales Analysis",
-            "image": "Images/superstore.jpg",
-            "description": """
-                Comprehensive sales analytics project combining data preprocessing, SQL analysis, and insights generation.
-            """,
-            "highlights": [
-                "Performed extensive data cleaning with Pandas",
-                "Conducted SQL analysis for business insights",
-                "Identified key trends in customer behavior and sales performance",
-                "Generated actionable recommendations for business optimization"
-            ],
-            "tech": ["SQL", "Pandas", "Data Analysis", "Business Intelligence", "Streamlit"],
+            "title": "Superstore Sales Analysis",
+            "desc": "Comprehensive sales analytics project combining Python preprocessing with SQL-based business intelligence. Identified customer behavior patterns, revenue drivers, and shipping bottlenecks. Data-driven recommendations contributed to an approximate 5% sales increase with an interactive Streamlit dashboard.",
+            "tech": ["SQL", "Python", "Pandas", "Power BI", "Business Intelligence", "Streamlit"],
             "github": "https://github.com/Tayyab885/Superstore-Sales-Analysis",
             "demo": None
         },
         {
-            "title": "🦠 COVID-19 Data Analysis",
-            "image": "Images/covid.jpg",
-            "description": """
-                In-depth analysis of COVID-19 data using SQL for infection rates, death rates, and vaccination statistics.
-            """,
-            "highlights": [
-                "Calculated country-wise infection and death percentages",
-                "Analyzed vaccination rates across different regions",
-                "Identified trends and patterns in pandemic spread",
-                "Generated insights for data-driven decision making"
-            ],
-            "tech": ["SQL", "Data Analysis", "Statistics", "Public Health Data"],
+            "title": "COVID-19 Data Analysis Using SQL",
+            "desc": "In-depth SQL analysis of global COVID-19 data covering infection rates, death percentages, vaccination rollout statistics, and regional pandemic trends. Used CTEs and window functions to calculate country-wise metrics and produce insights for data-driven public health decision-making.",
+            "tech": ["SQL", "Data Analysis", "Statistics", "Public Health", "CTEs", "Window Functions"],
             "github": "https://github.com/Tayyab885/Covid-19-Data-Analysis-Using-SQL",
             "demo": None
         },
         {
-            "title": "🧹 Data Cleaning Using SQL",
-            "image": "Images/datacleaning.webp",
-            "description": """
-                Comprehensive data cleaning project on Nashville Housing Data using advanced SQL techniques.
-            """,
-            "highlights": [
-                "Standardized and cleaned large housing dataset",
-                "Implemented string manipulation for address parsing",
-                "Handled missing values and data inconsistencies",
-                "Transformed data for improved analysis quality"
-            ],
-            "tech": ["SQL", "Data Cleaning", "Data Transformation", "ETL"],
+            "title": "Nashville Housing Data Cleaning Using SQL",
+            "desc": "Comprehensive data cleaning project on Nashville housing dataset using advanced SQL. Standardized date formats, parsed and split address fields, handled NULL values, removed duplicate records using ROW_NUMBER(), and dropped redundant columns to produce a clean, analysis-ready dataset.",
+            "tech": ["SQL", "Data Cleaning", "ETL", "Data Transformation", "Window Functions"],
             "github": "https://github.com/Tayyab885/Nashville-Housing-Data-Cleaning-Using-SQL",
             "demo": None
-        }
+        },
     ]
-    
-    # Display projects
-    for idx, project in enumerate(projects):
-        st.markdown('<div class="project-card">', unsafe_allow_html=True)
-        
-        col1, col2 = st.columns([1, 2])
-        
-        with col1:
-            st.image(project['image'], width='stretch')
-        
-        with col2:
-            st.markdown(f'<h3 class="project-title">{project["title"]}</h3>', unsafe_allow_html=True)
-            st.markdown(f'<p class="project-desc">{project["description"]}</p>', unsafe_allow_html=True)
-            
-            st.markdown('<p class="project-desc"><strong>Key Highlights:</strong></p>', unsafe_allow_html=True)
-            for highlight in project['highlights']:
-                st.markdown(f'<p class="project-desc">• {highlight}</p>', unsafe_allow_html=True)
-            
-            # Tech stack
-            tech_tags = ''.join([f'<span class="skill-tag">{tech}</span>' for tech in project['tech']])
-            st.markdown(f'<div style="margin: 15px 0;">{tech_tags}</div>', unsafe_allow_html=True)
-            
-            # Buttons
-            button_html = f'<a href="{project["github"]}" target="_blank" class="custom-button github-button">View on GitHub</a>'
-            if project.get('demo'):
-                button_html += f' <a href="{project["demo"]}" target="_blank" class="custom-button">Live Demo</a>'
-            st.markdown(button_html, unsafe_allow_html=True)
-        
-        st.markdown('</div>', unsafe_allow_html=True)
-        st.markdown('<hr style="border: 1px solid rgba(96, 165, 250, 0.2); margin: 30px 0;">', unsafe_allow_html=True)
-    
-    # Call to action
+
+    col1, col2 = st.columns(2)
+    for i, proj in enumerate(projects):
+        col = col1 if i % 2 == 0 else col2
+        with col:
+            tags_html = ''.join([f'<span class="tag">{t}</span>' for t in proj['tech']])
+            demo_btn = f'<a href="{proj["demo"]}" target="_blank" class="proj-btn">Live Demo</a>' if proj.get('demo') else ''
+            st.markdown(f"""<div class="proj-card">
+<div class="proj-num">PROJECT {str(i+1).zfill(2)}</div>
+<div class="proj-title">{proj['title']}</div>
+<div class="proj-desc">{proj['desc']}</div>
+<div style="margin:0.75rem 0 1rem 0">{tags_html}</div>
+<a href="{proj['github']}" target="_blank" class="proj-btn">GitHub</a> {demo_btn}
+</div>""", unsafe_allow_html=True)
+
     st.markdown(f"""
-        <div class="glass-card" style="text-align: center; padding: 40px;">
-            <h2 style="color: #60a5fa; margin-bottom: 20px;">Want to see more?</h2>
-            <p class="intro-text">Check out my GitHub for more projects and contributions!</p>
-            <a href="{GITHUB_URL}" target="_blank" class="custom-button github-button" style="font-size: 1.2rem; padding: 15px 40px;">
-                Visit My GitHub
+        <div style="text-align:center;padding:2.5rem;background:#222222;border:1px solid #2e2e2e;
+             border-radius:6px;margin-top:1rem;">
+            <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:#444;
+                 letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem;">
+                More Projects
+            </div>
+            <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;
+                 color:#fff;margin-bottom:0.75rem;">
+                See Everything on GitHub
+            </div>
+            <a href="{GITHUB_URL}" target="_blank" class="proj-btn" style="font-size:0.72rem;padding:10px 24px;">
+                Visit Profile ↗
             </a>
         </div>
     """, unsafe_allow_html=True)
 
-# CONTACT PAGE
-elif selected_page == 'Contact':
-    st.markdown('<h1 class="gradient-text">📞 Get In Touch</h1>', unsafe_allow_html=True)
-    
+
+# ===== CONTACT PAGE =====
+elif nav_choice == 'Contact':
     st.markdown("""
-        <div class="glass-card">
-            <p class="intro-text">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. 
-                Whether you want to collaborate on a data science project or just want to say hi, feel free to reach out!</p>
-        </div>
+        <div class="sec-label">Contact</div>
+        <div class="sec-title">Get In Touch</div>
     """, unsafe_allow_html=True)
-    
-    # Contact Methods
-    col1, col2 = st.columns(2)
-    
+
+    col1, col2, col3 = st.columns(3)
+
     with col1:
-        st.markdown("""
-            <div class="glass-card" style="text-align: center;">
-                <h2 style="color: #60a5fa; font-size: 3rem;">💼</h2>
-                <h3 class="subheading">Professional Network</h3>
-                <p class="intro-text">Connect with me on LinkedIn for professional networking and opportunities.</p>
-                <a href="{}" target="_blank" class="custom-button linkedin-button">
-                    Connect on LinkedIn
-                </a>
+        st.markdown(f"""
+            <div class="contact-card">
+                <span class="contact-icon">↗</span>
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-sub">Professional networking and career opportunities</div>
+                <a href="{LINKEDIN_URL}" target="_blank" class="contact-btn">Connect</a>
             </div>
-        """.format(LINKEDIN_URL), unsafe_allow_html=True)
-        
-        st.markdown("""
-            <div class="glass-card" style="text-align: center;">
-                <h2 style="color: #60a5fa; font-size: 3rem;">💻</h2>
-                <h3 class="subheading">Open Source</h3>
-                <p class="intro-text">Check out my code, contribute to projects, or star repositories you find interesting.</p>
-                <a href="{}" target="_blank" class="custom-button github-button">
-                    Visit GitHub Profile
-                </a>
-            </div>
-        """.format(GITHUB_URL), unsafe_allow_html=True)
-    
+        """, unsafe_allow_html=True)
+
     with col2:
-        st.markdown("""
-            <div class="glass-card" style="text-align: center;">
-                <h2 style="color: #60a5fa; font-size: 3rem;">📧</h2>
-                <h3 class="subheading">Email Me</h3>
-                <p class="intro-text">For project inquiries, collaborations, or just to say hello.</p>
-                <a href="mailto:{}" class="custom-button">
-                    Send an Email
-                </a>
+        st.markdown(f"""
+            <div class="contact-card">
+                <span class="contact-icon">⌨</span>
+                <div class="contact-label">GitHub</div>
+                <div class="contact-sub">Code, projects, and open source contributions</div>
+                <a href="{GITHUB_URL}" target="_blank" class="contact-btn">View Profile</a>
             </div>
-        """.format(EMAIL), unsafe_allow_html=True)
-        
-        st.markdown("""
-            <div class="glass-card" style="text-align: center;">
-                <h2 style="color: #60a5fa; font-size: 3rem;">📱</h2>
-                <h3 class="subheading">Social Media</h3>
-                <p class="intro-text">Follow me on social platforms to stay updated with my latest work and insights.</p>
-                <div style="margin-top: 20px;">
-                    <a href="{}" target="_blank" class="custom-button linkedin-button">LinkedIn</a>
-                    <a href="{}" target="_blank" class="custom-button github-button">GitHub</a>
-                </div>
+        """, unsafe_allow_html=True)
+
+    with col3:
+        st.markdown(f"""
+            <div class="contact-card">
+                <span class="contact-icon">@</span>
+                <div class="contact-label">Email</div>
+                <div class="contact-sub">Project inquiries, collaborations, or just hello</div>
+                <a href="mailto:{EMAIL}" class="contact-btn">Send Email</a>
             </div>
-        """.format(LINKEDIN_URL, GITHUB_URL), unsafe_allow_html=True)
-    
-    st.markdown("---")
-    
-    # Contact Form Section
-    st.markdown('<h2 class="section-header">📝 Send Me a Message</h2>', unsafe_allow_html=True)
-    
+        """, unsafe_allow_html=True)
+
+    st.markdown("<hr>", unsafe_allow_html=True)
+
     st.markdown("""
-        <div class="glass-card">
-            <p class="intro-text">
-                Fill out the form below and I'll get back to you as soon as possible!
-            </p>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:#444;
+             letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.4rem;">
+            Direct Message
+        </div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;
+             color:#fff;margin-bottom:1.5rem;">
+            Send a Message
         </div>
     """, unsafe_allow_html=True)
-    
+
     with st.form("contact_form"):
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            name = st.text_input("Your Name *", placeholder="John Doe")
-            email = st.text_input("Your Email *", placeholder="john@example.com")
-        
-        with col2:
-            subject = st.text_input("Subject *", placeholder="Project Collaboration")
-            phone = st.text_input("Phone Number (Optional)", placeholder="+92 300 1234567")
-        
-        message = st.text_area(
-            "Your Message *",
-            placeholder="Tell me about your project or inquiry...",
-            height=200
-        )
-        
-        # Form submission
-        submitted = st.form_submit_button("Send Message", type="primary")
-        
+        c1, c2 = st.columns(2)
+        with c1:
+            name = st.text_input("Name", placeholder="Your name")
+            email_in = st.text_input("Email", placeholder="your@email.com")
+        with c2:
+            subject = st.text_input("Subject", placeholder="Project inquiry")
+            phone = st.text_input("Phone (optional)", placeholder="+92 300 0000000")
+
+        message = st.text_area("Message", placeholder="Tell me about your project...", height=160)
+        submitted = st.form_submit_button("Send Message")
+
         if submitted:
-            if name and email and subject and message:
-                st.success("✅ Thank you for your message! I'll get back to you soon.")
-                st.balloons()
+            if name and email_in and subject and message:
+                st.success("Message sent — I'll get back to you shortly.")
             else:
-                st.error("❌ Please fill in all required fields (marked with *).")
-    
-    st.markdown("---")
-    
-    # Collaboration Interests
-    st.markdown('<h2 class="section-header">🤝 What I\'m Looking For</h2>', unsafe_allow_html=True)
-    
-    interests_col1, interests_col2, interests_col3 = st.columns(3)
-    
-    with interests_col1:
-        st.markdown("""
-            <div class="glass-card" style="text-align: center; min-height: 250px;">
-                <h2 style="color: #60a5fa; font-size: 2.5rem;">🚀</h2>
-                <h3 class="subheading">Exciting Projects</h3>
-                <p class="intro-text">
-                    ML/AI projects that push boundaries and solve real-world problems
-                </p>
-            </div>
-        """, unsafe_allow_html=True)
-    
-    with interests_col2:
-        st.markdown("""
-            <div class="glass-card" style="text-align: center; min-height: 250px;">
-                <h2 style="color: #a78bfa; font-size: 2.5rem;">💼</h2>
-                <h3 class="subheading">Career Opportunities</h3>
-                <p class="intro-text">
-                    Full-time roles, freelance work, or consulting in data science and ML
-                </p>
-            </div>
-        """, unsafe_allow_html=True)
-    
-    with interests_col3:
-        st.markdown("""
-            <div class="glass-card" style="text-align: center; min-height: 250px;">
-                <h2 style="color: #f472b6; font-size: 2.5rem;">🎓</h2>
-                <h3 class="subheading">Learning & Growth</h3>
-                <p class="intro-text">
-                    Open source contributions, mentorship, and knowledge sharing
-                </p>
-            </div>
-        """, unsafe_allow_html=True)
-    
-    # Footer
-    st.markdown("---")
+                st.error("Please fill in all required fields.")
+
+    st.markdown("<hr>", unsafe_allow_html=True)
+
     st.markdown("""
-        <div style="text-align: center; padding: 30px;">
-            <p style="color: #9ca3af; font-size: 1.1rem;">
-                Made with ❤️ by Muhammad Tayyab | © 2025 All Rights Reserved
-            </p>
-            <p style="color: #60a5fa; font-size: 0.9rem; margin-top: 10px;">
-                "Turning data into insights, one project at a time"
-            </p>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:#444;
+             letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.4rem;">
+            Looking For
+        </div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;
+             color:#fff;margin-bottom:1.5rem;">
+            Open To
+        </div>
+    """, unsafe_allow_html=True)
+
+    oc1, oc2, oc3 = st.columns(3)
+    open_to = [
+        ("◈", "Exciting Projects", "ML/AI challenges that push boundaries and solve real-world problems."),
+        ("◉", "Career Opportunities", "Full-time roles, freelance work, or consulting in data science and ML."),
+        ("◌", "Learning & Growth", "Open source, mentorship, research collaboration, and knowledge sharing."),
+    ]
+
+    for col, (icon, title, desc) in zip([oc1, oc2, oc3], open_to):
+        with col:
+            st.markdown(f"""
+                <div class="contact-card">
+                    <span class="contact-icon" style="font-size:1.4rem;">{icon}</span>
+                    <div class="contact-label">{title}</div>
+                    <div class="contact-sub">{desc}</div>
+                </div>
+            """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <div class="footer-text">
+            Muhammad Tayyab · m.tayyab273@gmail.com · Faisalabad, Pakistan · © 2023
         </div>
     """, unsafe_allow_html=True)
